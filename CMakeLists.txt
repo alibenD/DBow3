@@ -1,7 +1,7 @@
 # ----------------------------------------------------------------------------
 #   Basic Configuration
 # ----------------------------------------------------------------------------
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.5)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -12,6 +12,8 @@ list(GET PROJECT_VERSION_PARTS 0 PROJECT_VERSION_MAJOR)
 list(GET PROJECT_VERSION_PARTS 1 PROJECT_VERSION_MINOR)
 list(GET PROJECT_VERSION_PARTS 2 PROJECT_VERSION_PATCH)
 set(PROJECT_SOVERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}")
+# added by aliben for rpath
+
 
 message("LIB_INSTALL_DIR: ${LIB_INSTALL_DIR}")
 
@@ -41,6 +43,8 @@ else()
 endif()
 
 
+SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 #
 OPTION(BUILD_UTILS	"Set to OFF to not build utils" ON)
